@@ -12,6 +12,6 @@ Next, Query a word, using
 > ./query.sh
 
 
-I will be happy to provide customizations which would suit your own data sets. 
+I will be happy to provide customizations and documentation which would suit your own data sets. 
 Reach out to me via bsavanth@uark.edu
 
