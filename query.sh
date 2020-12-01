@@ -2,22 +2,9 @@
 #! /bin/bash
 
 
-# echo 
-# echo
-# echo "	#*****************************************#"
-# echo "	#                                         #"
-# echo "	#                                         #"
-# echo "	#   Welcome to my search engine           #"
-# echo "	#                                         #"
-# echo "	#                                         #"
-# echo "	#*****************************************#"
-# echo
-# echo
-# echo
 
 echo
-echo "Enter your query and blink exactly once->"
-echo
+
 read name
 echo
 
@@ -33,7 +20,6 @@ java ProcessQuery $inputFolder
 
 
 javac Main.java
-echo "Relevant Files --->"
 echo
 
 java Main
@@ -42,11 +28,9 @@ rm -r *.class Input_Tokens processed_query
 
 
 echo
-echo "--> IT TOOK $[$ENDTIME - $STARTTIME] SECONDS TO COMPLETE THIS TASK"
 echo
 echo
 echo
-echo "Done."
 
 echo
 echo

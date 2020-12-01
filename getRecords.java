@@ -17,12 +17,14 @@ public class getRecords
 	{
 		this.indexinMap=lineNo;
 	}	
-	public void fromMapping() throws IOException
+	public String fromMapping() throws IOException
 	{
 	   
         RandomAccessFile rand = new RandomAccessFile("mapping.txt","r");
         FileInputStream stream= new FileInputStream("mapping.txt");
         BufferedReader br=null;
+        
+        String retFinal="";
    
         try {
            
@@ -31,7 +33,17 @@ public class getRecords
             rand.close();
             br = new BufferedReader(new InputStreamReader(stream));
             String temp[] = br.readLine().split("\\s+");
-            System.out.print("doc_name: "+String.format("%5s",temp[1])+"\n");
+            
+            if (temp[1].trim()!="foo.txt")
+            {
+            	String file_name[] = temp[1].split("\\.");
+            	retFinal = file_name[0]+"."+file_name[1];
+            	
+            }
+            else
+            {
+            	retFinal = temp[1];
+            }
             br.close();
 
         }
@@ -42,6 +54,7 @@ public class getRecords
             stream.close();
         }
 
+		return retFinal;
 	}
 	
 	public String [] fromPosting() throws IOException

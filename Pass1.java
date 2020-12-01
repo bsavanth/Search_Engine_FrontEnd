@@ -73,13 +73,13 @@ public class Pass1 {
                     //Read each line in the file (unsorted tokens)
                     String line;
                     while((line = br.readLine()) != null){
-                        if( !line.equals("")&& !stopwords.contains(line) &&line.length()!=1 && wordCounts.get(line)!=1){
+                        if( !line.equals("")&& !stopwords.contains(line) &&line.length()!=1 ){
                         	// Send tokens to Hashtable class for insertion(It will handle rest)
                             localhash.insert(line);
                             count++;
                         }
 
-                        if( !tokenlist.contains(line)&& !stopwords.contains(line)&&line.length()!=1 && wordCounts.get(line)!=1){
+                        if( !tokenlist.contains(line)&& !stopwords.contains(line)&&line.length()!=1 ){
                         	//Calculate the vocabulary of the file]
                             tokenlist.add((line.toString()));
                         }

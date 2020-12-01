@@ -1,5 +1,9 @@
 import java.io.*;
+import java.util.*;
+import java.util.Map.*;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     
@@ -54,8 +58,7 @@ public class Main {
 
 					}
         }
-
-
+	
 		 double[] hold= new double[accumulator.length];
 		
 		 for(int i=0; i<accumulator.length; i++)
@@ -63,42 +66,37 @@ public class Main {
 		 {
         		 hold[i]=accumulator[i];
          }
+
 		
-        int pastmax = Integer.MIN_VALUE;
-        int count =0;
-        for(int i=0; i<hold.length; i++){
-            count++;
-            if(count>10){
-                break;
-            }
-            int max = -1; 
-            double maxval =0; 
-      		for(int j=0; j<hold.length;j++){
-           		if(maxval < hold[j]){
-              		 maxval = hold[j];
-               		 max = j;
-               		 hold[j] = 0;
-            		}
-       			 }
-    
-            if(max < 0){
-                break;
-            }
-            if(pastmax != max){
-                pastmax = max;
-                System.out.print("	doc_id: "+String.format("%3s",max)+"\t"+"rtf-idf: "+String.format("%10.7s",accumulator[max])+"\t");
-              	getRecords gR1 = new getRecords(max);
-                gR1.fromMapping();
-            }
-            else {
-            	
-                break;
-            }
-
-
-
-        }
+        HashMap<Integer, Double> hash_map = new HashMap<Integer, Double>();
         
+        for(int i=0; i<accumulator.length; i++)
+		 
+		 if (accumulator[i]>0)
+		 {
+              	hash_map.put(i, accumulator[i]);	
+         }
+         
+         Map<Integer, Double> sortedMap = hash_map.entrySet().stream()
+                         .sorted(Entry.comparingByValue(Comparator.reverseOrder()))
+                         .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+         
+        int count=0;    
+         StringBuilder str = new StringBuilder("");            
+        for (Map.Entry<Integer, Double> entry : sortedMap.entrySet()) 
+        
+        {
+        	if(count<10)
+        	{
+        	count++;
+    		int val = entry.getKey();
+    		getRecords gR1 = new getRecords(val);
+            str.append(gR1.fromMapping()+" "+accumulator[val]+"\n");
+             } 	
+		}
+                              
+    	System.out.println(str.toString());
+ 
     }
 
     public static int find(String str)
