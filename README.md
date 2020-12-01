@@ -2,7 +2,7 @@
 
 html/css for front end design.
 
-Used PHP to post search terms fromt html page to back end java code.
+Used PHP to post search terms from the html page to back end java code.
 Rtf-Idf
 
 Hosted it on web server, 
