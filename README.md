@@ -1,17 +1,14 @@
-# Rtf-Idf-Search-Engine
+# Search-Engine-Front_End
+
+html/css for front end design.
+
+Used PHP to post search terms fromt html page to back end java code.
 Rtf-Idf
 
-Search engine back-end with extremely fast lookups, can be easily integrated into a website as a microservice. 
+Hosted it on web server, 
 
-Flow --> 
+http://www.csce.uark.edu/~bsavanth/search/query.php
 
-First, Index files and generate a trio of fixed length dict, post, map files.
-> ./index.sh input some_name
+To have a demo of this search engine, scroll and open one of the raw input html file, pick a word from it.
 
-Next, Query a word, using
-> ./query.sh
-
-
-I will be happy to provide customizations and documentation which would suit your own data sets. 
-Reach out to me via bsavanth@uark.edu
-
+When you enter that word in search engine, it gives you top 10 relevant files for that word. 
